@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>SAMVIDHAN MANDAL!!</title>
+    <link rel="stylesheet" href="game.css">
+
+    <!-- PDF.js library via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.min.js"></script>
+
+    <!-- <style>
+        /* Full-screen black background */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black; /* Set background to black */
+        }
+    </style> -->
+
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap');
+
+        /* Make sure the body takes up full screen */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        /* The video container */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Send behind all content */
+            overflow: hidden;
+        }
+
+        /* Style the video */
+        .background-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the video covers the entire screen */
+            /* opacity: 0.7; Faded effect */
+            opacity: 0.8; /* Faded effect */
+
+        }
+
+        /* Content over the video */
+        .content {
+            position: relative;
+            z-index: 1; /* Bring content above the video */
+            color: white;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: Arial, sans-serif;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <div class="launch-screen">
+        <div class="constitutional-elements">
+            <div class="ashoka-emblem"></div>
+        </div>
+        <h1 class="game-title">Samvidhan Mandal</h1>
+        <img src="images\Samvidhan Instructions.jpg" alt="Samvidhan Instructions" class="central-image">
+        <div class="subtitle">Explore the Essence of Indian Democracy</div>
+        <button class="play-button" onclick="startGame()">Begin Learning!</button>
+    </div>
+
+    <div class="arrow-container-top">
+        <div class="arrow">↖</div>
+    </div>
+
+    <!-- Bottom-right arrow -->
+    <div class="arrow-container-bottom">
+        <div class="arrow">↘</div>
+    </div>
+
+    <!-- <div class="popup-screen" id="popup-screen"> -->
+        <!-- <img src="path-to-your-image.jpg" alt="Popup Image" class="popup-image">
+        <button class="continue-button" onclick="continueToGame()">Please Click to Continue</button>
+    </div> -->
+    
+    <div id="image-screen" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: white;">
+        <img src="images\Samvidhan - Instruction.jpg" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+    </div>
+
+     <!-- Background video container -->
+     <!-- <div class="background-video">
+        <video autoplay muted loop>
+            <source src="constitution.mp4" type="video/mp4">
+            <source src="City_Of_Gamers.mp4" type="video/mp4">
+            <source src="Constitution_video_2.mp4" type="video/mp4">
+
+
+            Your browser does not support the video tag.
+        </video>
+    </div> -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.min.js"></script>
+    <!-- <script src="game.js"></script> -->
+
+    <!-- Lawyer Status Container -->
+    <div id="lawyerStatusContainer">
+        <img id="lawyerIcon" src="images\\lawyer_active.png" alt="Lawyer Icon" />
+        <div id="lawyerStatusBox">Lawyer Not Active</div>
+    </div>
+
+    <!-- Key Status Container -->
+    <div id="keyContainer">
+        <img id="keyIcon" src="images\\key.png" alt="Key Icon" />
+        <button id="keyStatusBox" disabled>Key Not Found</button>
+    </div>
+
+
+    <!-- Book Status Container -->
+    <!-- <div id="BookContainer">
+        <img id="BookIcon" src="C:\\Users\\Manas\\Desktop\\Samvidhan Mandal\\images\\pdf_icon.png" alt="Key Icon" />
+        <iframe id="pdfFrame" src="" width="100%" height="100%" style="border: none;"></iframe>
+        <button id="BookStatusBox">Guidelines Book</button>
+    </div> -->
+
+
+      <!-- Button to trigger PDF viewer -->
+      <div class="container">
+        <div>
+            <img class="law-icon" src="images\\pdf_icon.png" alt="Law Icon">
+            <button class="button" id="BookStatusBox">Guidelines Book</button>
+        </div>
+    </div>
+
+    <div id="pdfViewerContainer">
+        <div id="pdfContainer">
+            <iframe id="pdfFrame" width="100%" height="100%" style="border:none;"></iframe>
+            <button id="closeButton">Close</button>
+        </div>
+    </div>
+    <!-- <div id="pdfViewerContainer">
+        <iframe id="pdfFrame" src="" width="100%" height="100%" style="border: none;"></iframe>
+        <button id="closePDF">Close</button>
+    </div> -->
+
+
+<!-- 
+    <div class="instruction-container">
+        <h3>Instructions</h3>
+        <ul>
+            <li>Step 1: Follow the guidelines.</li>
+            <li>Step 2: Fill in all the necessary fields.</li>
+            <li>Step 3: Submit the form.</li>
+        </ul>
+    </div> -->
+
+
+    <div class="instruction-container">
+        <h3>Instructions</h3>
+        <div class="instruction-steps">
+            <div class="instruction-step">
+                <img src="images\\book_inst.png" alt="Guidelines Icon" class="step-icon">
+                <p>Help books!</p>
+            </div>
+            <div class="instruction-step">
+                <img src="images\\police_inst.png" alt="Fields Icon" class="step-icon">
+                <p>Police, Answer them if you get caught!</p>
+            </div>
+            <div class="instruction-step">
+                <img src="images\\jal_inst.png" alt="Submit Icon" class="step-icon">
+                <p>Jail, Give wrong Answer to Police, and live here!</p>
+            </div>
+            <div class="instruction-step">
+                <img src="images\\car_inst.png" alt="Submit Icon" class="step-icon">
+                <p>This will take you 4 steps ahead!</p>
+            </div>
+            <div class="instruction-step">
+                <img src="images\\key_inst.png" alt="Submit Icon" class="step-icon">
+                <p>This is a lifeline, Once chance more if you give wrong Answer!</p>
+            </div>
+            <div class="instruction-step">
+                <img src="images\\lawyer photo.png" alt="Submit Icon" class="step-icon">
+                <p>Friend in need for one question!</p>
+            </div>
+            <div class="instruction-step">
+                <img src="images\\rope_inst.png" alt="Submit Icon" class="step-icon">
+                <p>Rope takes you from Police to the Jail, Beware!</p>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+      <!-- PDF Overlay -->
+    <div id="pdfOverlay">
+        <div id="pdfViewerContainer">
+        <div id="pdfNav">
+            <button id="prevPageBtn">&larr; Prev</button>
+            <span id="pageInfo">Page 1 of 1</span>
+            <button id="nextPageBtn">Next &rarr;</button>
+            <button id="closeBtn">Close</button>
+        </div>
+        <canvas id="pdfCanvas"></canvas>
+        </div>
+    </div>
+
+
+
+    <!-- Popup Container -->
+    <div id="lawyerPopup" class="popup">
+        <div class="popup-content">
+            <img id="lawyerImage" src="" alt="Lawyer" />
+            <p>Lawyer Achieved!! Take his help whenever necessary.</p>
+            <button id="closePopup">Close</button>
+            <!-- Sparkling Effects -->
+            <div class="sparkle sparkle1"></div>
+            <div class="sparkle sparkle2"></div>
+            <div class="sparkle sparkle3"></div>
+        </div>
+    </div>
+
+
+    <!-- Popup Container -->
+    <div id="KeyPopup" class="popup">
+        <div class="popup-content">
+            <img id="KeyImage" src="" alt="Key" />
+            <p>Key Achieved!! Use it for Second Chance.</p>
+            <button id="closePopupkey">Close</button>
+            <!-- Sparkling Effects -->
+            <div class="sparkle sparkle1"></div>
+            <div class="sparkle sparkle2"></div>
+            <div class="sparkle sparkle3"></div>
+        </div>
+    </div>
+
+
+
+    <div id="car-animation" style="display: none;">
+        <img id="car-gif" src="" alt="Car Animation" />
+    </div>
+    
+    <!-- <div id="car-animation" style="display: none;">
+        <img id="car-gif" src="" alt="Car Animation" />
+    </div> -->
+      
+      
+
+      
+
+    <div id="popup" class="hidden">
+        <h2>Correct Answer!</h2>
+        <p>Car broom broooooooooooooom</p>
+        <button id="closePopup">Close</button>
+    </div>
+
+    <div id="questionModal" class="question-modal" style="display: none;">
+        <div id="questionText"></div>
+        <div id="optionsContainer"></div>
+        <button id="closeModal" style="margin-top: 20px; padding: 10px; border: none; background-color: #ff5c5c; color: white; border-radius: 5px; cursor: pointer;">Close</button>
+      </div>
+
+      
+    <!-- Background Music -->
+    <audio autoplay loop id="backgroundMusic">
+        <source src="audio\\bg_music.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <!-- <button onclick="document.querySelector('audio').play()">Play Background Music</button> -->
+
+    <h1>Samvidhan Mandal</h1>
+
+    <div id="diceCont">
+        <!-- <p id="tog">Roll's Dice : </p> -->
+        <p id="dice">0</p>
+        <button id="diceBtn">ROLL</button>
+    </div>
+
+    <!-- <div id="quiz-container">
+        <div id="question-container">
+            <div id="images-container" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <!-- Images will be dynamically inserted here -->
+            <!-- </div>
+            <p id="question-text"></p>
+        </div>
+        <div id="options-container"></div>
+        <!-- <button id="next-button">Next</button> -->
+    <!-- </div> -->
+
+
+    <!-- <div id="game-board">
+        <img id="p1" src="chess-piece.png" alt="Red Player Marker">
+        Other player markers or elements -->
+    <!-- </div> -->
+
+    <div class="cont">
+
+        <div class="box" id="b41">
+
+        </div>
+        <div class="box" id="b42">
+
+        </div>
+        <div class="box" id="b43">
+
+        </div>
+        <div class="box" id="b44">
+
+        </div>
+        <div class="box" id="b45">
+
+        </div>
+        <div class="box" id="b46">
+
+        </div>
+        <div class="box" id="b47">
+
+        </div>
+        <div class="box" id="b48">
+
+        </div>
+        <div class="box" id="b49">
+
+        </div>
+        <div class="box" id="b50">
+
+        </div>
+        <div class="box" id="b40">
+
+        </div>
+        <div class="box" id="b39">
+
+        </div>
+        <div class="box" id="b38">
+
+        </div>
+        <div class="box" id="b37">
+
+        </div>
+        <div class="box" id="b36">
+
+        </div>
+        <div class="box" id="b35">
+
+        </div>
+        <div class="box" id="b34">
+
+        </div>
+        <div class="box" id="b33">
+
+        </div>
+        <div class="box" id="b32">
+
+        </div>
+        <div class="box" id="b31">
+
+        </div>
+        <div class="box" id="b21">
+
+        </div>
+        <div class="box" id="b22">
+
+        </div>
+        <div class="box" id="b23">
+
+        </div>
+        <div class="box" id="b24">
+
+        </div>
+        <div class="box" id="b25">
+
+        </div>
+        <div class="box" id="b26">
+
+        </div>
+        <div class="box" id="b27">
+
+        </div>
+        <div class="box" id="b28">
+
+        </div>
+        <div class="box" id="b29">
+
+        </div>
+        <div class="box" id="b30">
+
+        </div>
+        <div class="box" id="b20">
+
+        </div>
+        <div class="box" id="b19">
+
+        </div>
+        <div class="box" id="b18">
+
+        </div>
+        <div class="box" id="b17">
+
+        </div>
+        <div class="box" id="b16">
+
+        </div>
+        <div class="box" id="b15">
+
+        </div>
+        <div class="box" id="b14">
+
+        </div>
+        <div class="box" id="b13">
+
+        </div>
+        <div class="box" id="b12">
+
+        </div>
+        <div class="box" id="b11">
+
+        </div>
+        <div class="box" id="b01">
+
+            <p id="p1"></p>
+            <p id="p2"></p>
+
+        </div>
+        <div class="box" id="b02">
+
+        </div>
+        <div class="box" id="b03">
+
+        </div>
+        <div class="box" id="b04">
+
+        </div>
+        <div class="box" id="b05">
+
+        </div>
+        <div class="box" id="b06">
+
+        </div>
+        <div class="box" id="b07">
+
+        </div>
+        <div class="box" id="b08">
+
+        </div>
+        <div class="box" id="b09">
+
+        </div>
+        <div class="box" id="b10">
+
+        </div>
+
+
+    </div>
+
+    <!-- <img src="snake ladder.png" alt=""> -->
+    <!-- new_snake_ladder_image -->
+    <!-- <img src="snake_board_best.png" alt="Fixed Image" class="fixed-image"> -->
+
+    <!-- <img src="Sanvidhan_Mandal.gif" alt="Fixed Image" class="fixed-image"> -->
+    <img src="images\Samvidhan Mandal New Board.gif" alt="Fixed Image" class="fixed-image">
+
+    <!-- <video autoplay muted loop src="Sanvidhan_Mandal.mp4" controls class="video-background">
+        Your browser does not support the video tag.
+      </video> -->
+    </div>
+    <!-- snake_board_best -->
+    <!-- <img src="snake_board_best.png" alt=""> -->
+
+
+</body>
+<script src="game.js"></script>
+
+</html>

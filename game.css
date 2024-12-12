@@ -1,0 +1,1214 @@
+Reset styles
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  
+    h3 {
+      font-weight: bold; /* Makes the text bold */
+      font-size: 24px; /* Adjust the size as needed */
+  }
+
+  p {
+      font-weight: bold; /* Makes the text bold */
+      font-size: 18px; /* Adjust the size as needed */
+  }
+  
+   /* Bottom-right arrow container */
+   .arrow-container-bottom {
+    position: fixed;
+    bottom: 35px;
+    right: 150px;
+    animation: fadeInOut 25s forwards;
+  }
+
+  /* Top-left arrow container */
+  .arrow-container-top {
+      position: fixed;
+      top: 40px;
+      left: 280px;
+      animation: fadeInOut 25s forwards;
+  }
+
+  /* Common arrow styling */
+  .arrow {
+      color: red;
+      font-size: 1.5em;
+      display: flex;
+      align-items: center;
+      opacity: 0; /* Initially hidden */
+      animation: fadeEffect 2.5s infinite;
+  }
+
+  /* Specific text for the bottom-right arrow */
+  .arrow-container-bottom .arrow::after {
+      content: "➡ Roll the Dice";
+      margin-left: 10px;
+  }
+
+  /* Specific text for the top-left arrow */
+  .arrow-container-top .arrow::after {
+      content: "⬅ Read the Instructions Here";
+      margin-left: 10px;
+  }
+
+  /* Fade-in and fade-out animation for visibility */
+  @keyframes fadeEffect {
+      0%, 100% {
+          opacity: 0;
+      }
+      50% {
+          opacity: 1;
+      }
+  }
+
+  /* Total duration of 25s for both arrows */
+  @keyframes fadeInOut {
+      0% {
+          opacity: 1;
+      }
+      100% {
+          opacity: 0;
+          display: none;
+      }
+  }
+  .cont {
+    display: grid;
+    position: absolute; /* Make the grid overlap the image */
+    top: 220px; /* Adjust the vertical position of the grid */
+    left: 450px; /* Align the grid horizontally (adjust as needed) */
+    width: 1600px;
+    grid-template-columns: repeat(10, 0fr);
+    grid-gap: 0; /* Remove spacing between grid items */
+    margin: 0; /* Remove extra margins */
+    /* z-index: 1;  */
+    /* Ensure the grid is above the image */
+  }
+
+  .cont div {
+      width: 100px; /* Adjust for border width */
+      height: 150px;
+      border: 0.2px solid black;
+  }
+
+  
+
+  .fixed-image {
+      position: relative; /* Use relative positioning for the image */
+      display: block;
+      margin: 0 auto;
+      width: 1320px;
+      height: 900px;
+      z-index: 1; /* Set the image behind the grid */
+  }
+
+
+
+    .img {
+      display: block;
+      /* max-width: 100%; */
+      width: 1600px;
+      height: 900px;
+      margin: 0 auto;
+    }
+
+
+  .question-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .option-button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* background-color: #f0f0f0; */
+    background-image: url("images\\beige_parchment_paper.jpg");
+
+    cursor: pointer;
+  }
+  
+
+  #p1 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Circular shape */
+    position: relative;
+    right: -32px; /* Shift 25px to the right */
+    z-index: 2;
+    
+    /* Solid, vibrant red base with intense glow */
+    background-color: rgba(255, 0, 0, 0.8); /* More opaque background */
+    
+    /* Enhanced neon glow effect */
+    box-shadow: 
+        0 0 15px rgba(255, 0, 0, 0.9),     /* Outer glow - brighter */
+        0 0 25px rgba(255, 69, 0, 0.7),    /* Orange-red outer glow */
+        0 0 35px rgba(255, 20, 147, 0.5),  /* Pink-red outer glow */
+        inset 0 0 20px rgba(255, 0, 0, 0.6); /* Inner glow */
+    
+    /* Pulsing animation for extra visibility */
+    animation: redPulse 1.5s infinite alternate ease-in-out;
+    
+    /* Sharp border to increase visibility */
+    border: 3px solid rgba(255, 0, 0, 0.9);
+    
+    /* Ensure crisp appearance */
+    backdrop-filter: blur(2px);
+  }
+
+
+  #p1 {
+    width: 80px;     /* Rectangular width */
+    height: 120px;   /* Taller height for vertical orientation */
+    
+    /* Rounded corners for a softer look */
+    border-radius: 10px; 
+    
+    position: relative;
+    left: -1px;  
+    /* Shifted to the left instead of right */
+    z-index: 2;
+    
+    /* Background image settings with adjusted positioning */
+    background-image: url("images\\Stock Images\\player_icon.png");
+    background-size: contain;
+    background-position: right center; /* Shift icon more to the right within the container */
+    background-repeat: no-repeat;
+    
+    /* Dark background with a hint of blue-gray */
+    background-color: rgba(20, 30, 40, 0.7); /* Deep dark blue-gray */
+    
+    /* Subtle, muted glow effect */
+    box-shadow: 
+        0 0 10px rgba(50, 100, 150, 0.5),     /* Muted blue-gray outer glow */
+        0 0 15px rgba(30, 60, 90, 0.3),       /* Darker inner glow */
+        inset 0 0 8px rgba(40, 70, 100, 0.2); /* Very subtle inner glow */
+    
+    /* Pulsing animation for subtle visibility */
+    animation: softDarkPulse 2s infinite alternate ease-in-out;
+    
+    /* Subtle border */
+    border: 2px solid rgba(50, 70, 90, 0.5);
+    
+    /* Slight blur for softer edges */
+    backdrop-filter: blur(2px);
+  }
+
+  /* Soft pulsing animation */
+  @keyframes softDarkPulse {
+      0% {
+          transform: scale(1);
+          opacity: 2;
+          box-shadow: 
+              0 0 10px rgba(50, 100, 150, 0.5),
+              0 0 15px rgba(30, 60, 90, 0.3),
+              inset 0 0 8px rgba(40, 70, 100, 0.2);
+      }
+      100% {
+          transform: scale(1.02);
+          opacity: 4;
+          box-shadow: 
+              0 0 15px rgba(60, 110, 160, 0.6),
+              0 0 20px rgba(40, 70, 100, 0.4),
+              inset 0 0 12px rgba(50, 80, 110, 0.3);
+      }
+  }
+
+  /* Hover effect */
+  #p1:hover {
+      transform: scale(1.05);
+      box-shadow: 
+          0 0 20px rgba(60, 110, 160, 0.6),
+          0 0 25px rgba(40, 70, 100, 0.4),
+          inset 0 0 15px rgba(50, 80, 110, 0.3);
+  }
+    
+  #diceCont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    z-index: 99;
+    gap: 20px;
+    perspective: 1000px; /* Add 3D perspective for more depth */
+  }
+
+  /* Dice Button with Enhanced Interactivity */
+  #diceBtn {
+    padding: 20px 30px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    background: linear-gradient(145deg, #2a5298, #4a7cb8);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 -5px 10px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  #diceBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4),
+                inset 0 -5px 10px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(145deg, #4a7cb8, #2a5298);
+  }
+
+  #diceBtn:active {
+    transform: translateY(1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2),
+                inset 0 -2px 5px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Enhanced Dice Styling */
+  #dice {
+    width: 120px;
+    height: 120px;
+    background-color: #f0f0f0;
+    border: 6px solid red;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px; /* Increased font size */
+    font-weight: bold;
+    color: #333;
+    position: relative;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    perspective: 1000px; /* Add 3D perspective for more depth */
+  }
+
+  /* Dice Roll Animation */
+  #dice:hover {
+    animation: dice-roll 0.7s infinite;
+  }
+
+  @keyframes dice-roll {
+    0%, 100% { transform: rotateX(0deg) rotateY(0deg); }
+    25% { transform: rotateX(30deg) rotateY(20deg); }
+    50% { transform: rotateX(-30deg) rotateY(-20deg); }
+    75% { transform: rotateX(20deg) rotateY(30deg); }
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 1250px) {
+    #diceCont {
+      flex-direction: column;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #diceBtn {
+      width: 150px;
+      font-size: 1rem;
+    }
+
+    #dice {
+      width: 80px;
+      height: 80px;
+      font-size: 48px; /* Decreased font size for smaller screens */
+    }
+  }
+  /* Modal image styling */
+  .question-modal img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Modal overlay background */
+  .modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+
+ /* Modal container */
+  .question-modal {
+    /* position: fixed;
+    top: 100%;
+    left: 150%; */
+
+    position: fixed;
+    top: 50%;
+    /* left: -250%; */
+    right: 50%;
+
+    /* transform: translate(-50%, -50%); */
+    transform: translate(50%, 50%);
+
+    width: 80%; /* Adjust width for full container usage */
+    max-width: px; /* Maximum width constraint */
+    background-image: url("images\\beige_parchment_paper.jpg");
+    background-size: cover; /* Ensures the image covers the container */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-position: center; /* Centers the image */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    color: #000; /* Ensures text is visible against the background */
+  }
+
+  
+  #optionsContainer button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%; /* Buttons take full width */
+    text-align: left; /* Align text to the left for a better look */
+    /* background-color: #f7f7f7; */
+    background-image: url("images\\beige_parchment_paper.jpg");
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  #optionsContainer button:hover {
+    /* background-color: #e0e0e0; */
+    background-image: url("images\\beige_parchment_paper.jpg");
+
+  }
+
+  h1 {
+    color: white; /* Text color */
+    font-size: 3rem; /* Large font size */
+    text-align: center; /* Center text */
+    text-transform: uppercase; /* Make text uppercase */
+    font-family: 'Courier New', monospace; /* Give a retro look */
+    position: relative; /* Required for snake animation */
+    padding: 10px 20px;
+    border: 3px solid white; /* Add border */
+    border-radius: 15px; /* Rounded edges */
+    /* background: rgba(255, 255, 255, 0.1); Semi-transparent background */
+    background: black; /* Semi-transparent background */
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+    overflow: hidden; /* Clip inner animations */
+  }
+
+  /* Snake-like animation around the text */
+  h1::before, h1::after {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 5px;
+      background: linear-gradient(to right, #ff0000, #00ff00, #0000ff, #ff0000);
+      animation: moveSnake 3s linear infinite;
+  }
+
+  h1::before {
+      top: 0;
+      left: -50%;
+  }
+
+  h1::after {
+      bottom: 0;
+      right: -50%;
+  }
+
+  /* Snake animation keyframes */
+  @keyframes moveSnake {
+      0% {
+          transform: translateX(0);
+      }
+      100% {
+          transform: translateX(100%);
+      }
+  }
+
+  /* Add a ladder background pattern (optional) */
+  h1::after {
+      background-image: linear-gradient(to bottom, transparent 90%, white 90%);
+      background-size: 20%;
+  }
+
+  #popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: none; /* Initially hidden */
+  }
+
+  #popup button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+  #car-animation {
+    position: fixed;
+    top: 50%;
+    left: -200px;
+    transform: translateY(-50%);
+    animation: slide-across 2s ease-in-out;
+    z-index: 1000;
+  }
+
+  @keyframes slide-across {
+      0% {
+          left: -200px;
+      }
+      50% {
+          left: 50%;
+      }
+      100% {
+          left: 100vw;
+      }
+  }
+
+
+    /* Popup Styles */
+  .popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .popup-content {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    animation: popUp 0.5s ease-out forwards;
+  }
+
+  .popup-content img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Close Button */
+  #closePopup {
+    padding: 10px 20px;
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  #closePopup:hover {
+    background-color: #ff1a1a;
+  }
+
+  /* Pop-up Animation */
+  @keyframes popUp {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+  }
+
+  /* Sparkle Effects */
+  .sparkle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, yellow 60%, transparent 60%);
+    border-radius: 50%;
+    animation: sparkleAnim 1s infinite;
+    opacity: 0.8;
+  }
+
+  .sparkle1 {
+    top: -10px;
+    left: 50%;
+    animation-delay: 0s;
+  }
+
+  .sparkle2 {
+    bottom: -10px;
+    right: 50%;
+    animation-delay: 0.3s;
+  }
+
+  .sparkle3 {
+    top: 50%;
+    right: -10px;
+    animation-delay: 0.6s;
+  }
+
+  @keyframes sparkleAnim {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.5) translate(10px, -10px);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.8;
+    }
+  }
+
+  /* Lawyer Status Container Styles */
+  /* General Container Styles */
+  #lawyerStatusContainer {
+    position: fixed;
+    top: 20px; /* Adjust as needed */
+    right: 30px; /* Adjust as needed */
+    width: 150px;
+    text-align: center;
+    /* z-index: 1001; Ensure it's above other elements */
+  }
+
+  #lawyerIcon {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  #lawyerStatusBox {
+    padding: 10px;
+    background-color: #ff4d4d; /* Red for 'Not Active' */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: not-allowed; /* Indicate it's disabled */
+    transition: background-color 0.3s, color 0.3s, cursor 0.3s;
+    width: 100%;
+  }
+
+  #lawyerStatusBox:disabled {
+    cursor: not-allowed;
+  }
+
+  #lawyerStatusBox.active {
+    background-color: #28a745; /* Green for 'Available' */
+    cursor: pointer; /* Indicate it's clickable */
+  }
+
+
+
+  #keyContainer {
+    position: fixed;
+    top: 305px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    width: 150px;
+    text-align: center;
+    /* z-index: 1001; Ensure it's above other elements */
+  }
+
+  #keyIcon {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  #keyStatusBox {
+    padding: 10px;
+    background-color: #ff4d4d; /* Red for 'Not Active' */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: not-allowed; /* Indicate it's disabled */
+    transition: background-color 0.3s, color 0.3s, cursor 0.3s;
+    width: 100%;
+  }
+
+  #keyStatusBox:disabled {
+    cursor: not-allowed;
+  }
+
+  #keyStatusBox.active {
+    background-color: #28a745; /* Green for 'Available' */
+    cursor: pointer; /* Indicate it's clickable */
+  }
+
+
+
+
+  #BookContainer {
+    position: fixed;
+    top: 505px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    width: 150px;
+    text-align: center;
+    /* z-index: 1001; Ensure it's above other elements */
+  }
+
+  #BookIcon {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  #BookStatusBox {
+    padding: 10px;
+    background-color: darkgoldenrod; /* Red for 'Not Active' */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: not-allowed;
+    cursor: allowed;
+
+    transition: background-color 0.3s, color 0.3s, cursor 0.3s;
+    width: 100%;
+  }
+
+  
+
+  /* #BookStatusBox.active {
+    background-color: #28a745; /* Green for 'Available' */
+    /* cursor: pointer; Indicate it's clickable */
+  /* } */ */
+
+    /* Existing styles from your snippet */
+  #BookContainer {
+    position: fixed;
+    top: 505px; /* Adjust as needed */
+    right: 20px; /* Adjust as needed */
+    width: 150px;
+    text-align: center;
+    /* z-index: 1001; Ensure it's above other elements */
+  }
+
+  #BookIcon {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  /* #BookStatusBox {
+    padding: 10px;
+    background-color: darkgoldenrod;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, cursor 0.3s;
+    width: 100%;
+  } */
+
+  #BookStatusBox.active {
+      background-color: #28a745;
+      cursor: pointer; 
+  }
+
+  #BookStatusBox:disabled {
+      cursor: not-allowed;
+  }
+
+ */
+
+  
+  #closeBtn {
+    background: #dc3545;
+    margin-left: 10px;
+  }
+
+  #closeBtn:hover {
+    background: #c82333;
+  }
+
+  /* Page transition class */
+  .page-transition {
+    opacity: 0.1;
+  }
+
+  /* #pdfViewerContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #pdfContainer {
+      position: relative;
+      width: 90%;
+      height: 90%;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  #closeButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 10000;
+  } */
+
+  .container {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; */
+
+    position: fixed;
+    top: 470px; /* Adjust as needed */
+    right: 30px; /* Adjust as needed */
+    width: 150px;
+    text-align: center;
+
+  }
+
+  .button {
+    padding: 10px;
+    background-color: #ff4d4d; /* Red for 'Not Active' */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    /* cursor: not-allowed; Indicate it's disabled */
+    transition: background-color 0.3s, color 0.3s, cursor 0.3s;
+    width: 100%;
+  }
+
+  #pdfViewerContainer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+  }
+
+  #pdfContainer {
+      position: relative;
+      width: 90%;
+      height: 90%;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  #closeButton {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 10px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 10000;
+  }
+
+  .law-icon {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+
+  .instruction-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 180px; /* Reduced container width */
+    padding: 25px;
+    background-color: #fdfdfd;
+    border-radius: 12px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    border-left: 6px solid #d2a679;
+    text-align: center;
+  }
+
+  .instruction-container h3 {
+      margin: 0 0 10px 0;
+      font-size: 18px; /* Maintain font size for heading */
+      color: #0056b3;
+      font-weight: bold;
+      text-transform: uppercase;
+  }
+
+  .instruction-steps {
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+      gap: 20px; /* Maintain space between steps */
+      align-items: center; /* Center items horizontally */
+  }
+
+  .instruction-step {
+      display: flex;
+      flex-direction: column; /* Stack image and text vertically */
+      align-items: center; /* Center both image and text */
+      text-align: center;
+  }
+
+  .step-icon {
+      width: 70px; /* Keep the image size as before */
+      height: 50px;
+      margin-bottom: 9px;
+      border-radius: 10%; /* Optional: Circular styling */
+      object-fit: cover;  /* Ensure image fits nicely
+  }
+
+  .instruction-step p {
+      font-size: 14px; /* Keep font size as before */
+      color: #333;
+      line-height: 1.5;
+  }
+
+
+  
+  .launch-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1C4587, #B3202C);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Changed from space-between */
+    align-items: center;
+    gap: 2rem; /* Add some consistent spacing between elements */
+    z-index: 1000;
+    animation: fadeIn 1s ease-out;
+    perspective: 1000px;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent content from spilling out */
+  }
+
+  .constitutional-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+  }
+
+  .ashoka-emblem {
+      position: absolute;
+      top: 50px;
+      left: 50px; /* Adjusted to ensure it's fully visible */
+      width: 120px;
+      height: 120px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23fff"/><path d="M50 10 L65 40 L95 40 L70 65 L85 95 L50 75 L15 95 L30 65 L5 40 L35 40 Z" fill="%23108E44"/></svg>') no-repeat center;
+      background-size: contain;
+      opacity: 0.2;
+      animation: rotateEmblem 20s linear infinite;
+      z-index: 10;
+  }
+
+  .game-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+      margin-top: 2rem;
+      margin: 2rem 0;
+      margin-bottom: 1rem; /* Added to create space */
+      opacity: 0;
+      animation: slideUp 1.5s forwards 0.5s;
+      letter-spacing: 2px;
+      background: linear-gradient(to right, #FFD700, #FFFFFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+
+  .central-image {
+    max-width: 90%;
+    max-height: 60%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: 0;
+    opacity: 0;
+    animation: fadeIn 1.5s forwards 1s;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+
+  .play-button {
+      margin-top: 1rem; /* Added margin to push button down */
+      padding: 15px 50px;
+      font-size: 1.5rem;
+      background-color: #108E44;
+      color: white;
+      border: 3px solid #FFD700;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: slideUp 1s forwards 1.5s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+      .game-title {
+          font-size: 2.5rem;
+      }
+      .central-image {
+          max-width: 90%;
+          max-height: 50%;
+      }
+      .ashoka-emblem {
+          width: 80px;
+          height: 80px;
+          left: 20px;
+      }
+      .play-button {
+          padding: 10px 30px;
+          font-size: 1.2rem;
+      }
+  }
+
+  .subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem;
+      text-align: center;
+      opacity: 0;
+      display: none; /* Hidden for this layout */
+  }
+
+  .play-button {
+      padding: 15px 50px;
+      font-size: 1.5rem;
+      background-color: #108E44;
+      color: white;
+      border: 3px solid #FFD700;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: slideUp 1s forwards 1.5s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      margin-bottom: 2rem;
+  }
+
+  .play-button:hover {
+      transform: scale(1.05);
+      background-color: #FFD700;
+      color: #1C4587;
+  }
+
+  @keyframes rotateEmblem {
+      from { transform: translateX(-50%) rotate(0deg); }
+      to { transform: translateX(-50%) rotate(360deg); }
+  }
+
+  @keyframes slideUp {
+      0% { 
+          transform: translateY(50px);
+          opacity: 0;
+      }
+      100% { 
+          transform: translateY(0);
+          opacity: 1;
+      }
+  }
+
+  @keyframes fadeIn {
+      0% { 
+          opacity: 0;
+      }
+      100% { 
+          opacity: 1;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .game-title {
+          font-size: 2.5rem;
+      }
+      .central-image {
+          max-width: 90%;
+      }
+      .play-button {
+          padding: 10px 30px;
+          font-size: 1.2rem;
+      }
+  }
+  
+
+  .popup-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.popup-image {
+    max-width: 80%;
+    max-height: 60%;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+.continue-button {
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    background-color: #FFD700;
+    color: #1C4587;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.continue-button:hover {
+    background-color: #1C4587;
+    color: #FFD700;
+}
+
+.popup-screen.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+  
+
+
+
+/* Specific Styles Already Defined Above */
+
+
+
+
+
+/* Optional: Add a smooth color transition */
+
+
+  
+  
+   
+
+  
+
+
+
+
+
+  /* .cont {
+    display: grid;
+    position: absolute; /* Make the grid overlap the image */
+    /* top: 0; Adjust the vertical position of the grid */
+    /* left: 140px; Align the grid horizontally (adjust as needed) */
+    /* width: 1600px; */
+    /* grid-template-columns: repeat(10, 0fr); */
+    /* grid-gap: 0; Remove spacing between grid items */
+    /* margin: 0; Remove extra margins */
+    /* z-index: 2; Ensure the grid is above the image */
+/* } */
+
+/* .cont div { */
+    /* width: 100px; Adjust for border width */
+    /* height: 150px; */
+    /* border: 0.2px solid black; */
+/* } */
+
+/* .fixed-image { */
+    /* position: relative; Use relative positioning for the image */
+    /* display: block; */
+    /* margin: 0 auto; */
+    /* width: 1320px; */
+    /* height: 900px; */
+    /* z-index: 1; Set the image behind the grid */
+/* } */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
